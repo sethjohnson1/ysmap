@@ -1,11 +1,16 @@
 <div class="places form">
 <?php echo $this->Form->create('Place'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Place'); ?></legend>
+		<legend><?php echo __('Add/Edit Place'); ?></legend>
 	<?php
+		if (isset($edit)){
+			echo $this->Form->input('id');
+		}
 		echo $this->Form->input('name');
 		echo $this->Form->input('classname');
-		echo $this->Form->input('visible');
+		$checked=array();
+		if (!isset($edit)) $checked=array('checked'=>'checked');
+		echo $this->Form->input('visible',$checked);
 		echo $this->Form->input('img');
 		echo $this->Form->input('metatitle');
 		echo $this->Form->input('metadescription');

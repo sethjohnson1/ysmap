@@ -13,8 +13,10 @@ $cakeDescription = 'Yellowstone Map from the Center of the West';
 	</title>
 	<?php
 		echo $this->Html->meta('icon');
-
-		echo $this->Html->css('cake.generic');
+		echo $this->Html->script('https://code.jquery.com/jquery-2.2.0.min.js');
+		echo $this->Html->css('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css');
+		echo $this->Html->script('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js');
+		echo $this->Html->css('ysmap');
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -36,6 +38,5 @@ $cakeDescription = 'Yellowstone Map from the Center of the West';
 			
 		</div>
 	</div>
-	<?if (Configure::read('debug')>1)echo $this->element('sql_dump'); ?>
 </body>
 </html>

@@ -1,10 +1,15 @@
 <div class="layers form">
 <?php echo $this->Form->create('Layer'); ?>
 	<fieldset>
-		<legend><?php echo __('Add Layer'); ?></legend>
+		<legend><?php echo __('Add/Edit Layer'); ?></legend>
 	<?php
+		if (isset($edit)){
+			echo $this->Form->input('id');
+		}
 		echo $this->Form->input('name');
 		echo $this->Form->input('classname');
+		$checked=array();
+		if (!isset($edit)) $checked=array('checked'=>'checked');
 		echo $this->Form->input('visible');
 		echo $this->Form->input('img');
 		echo $this->Form->input('metatitle');

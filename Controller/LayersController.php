@@ -1,37 +1,15 @@
 <?php
 App::uses('AppController', 'Controller');
-/**
- * Layers Controller
- *
- * @property Layer $Layer
- * @property PaginatorComponent $Paginator
- */
+
 class LayersController extends AppController {
 
-/**
- * Components
- *
- * @var array
- */
 	public $components = array('Paginator');
 
-/**
- * index method
- *
- * @return void
- */
 	public function index() {
 		$this->Layer->recursive = 0;
 		$this->set('layers', $this->Paginator->paginate());
 	}
 
-/**
- * view method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function view($id = null) {
 		if (!$this->Layer->exists($id)) {
 			throw new NotFoundException(__('Invalid layer'));
@@ -40,11 +18,7 @@ class LayersController extends AppController {
 		$this->set('layer', $this->Layer->find('first', $options));
 	}
 
-/**
- * add method
- *
- * @return void
- */
+
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Layer->create();
@@ -59,13 +33,6 @@ class LayersController extends AppController {
 		$this->set(compact('places'));
 	}
 
-/**
- * edit method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function edit($id = null) {
 		if (!$this->Layer->exists($id)) {
 			throw new NotFoundException(__('Invalid layer'));
@@ -83,15 +50,10 @@ class LayersController extends AppController {
 		}
 		$places = $this->Layer->Place->find('list');
 		$this->set(compact('places'));
+		$this->set('edit',1);
+		$this->render('add','default');
 	}
 
-/**
- * delete method
- *
- * @throws NotFoundException
- * @param string $id
- * @return void
- */
 	public function delete($id = null) {
 		$this->Layer->id = $id;
 		if (!$this->Layer->exists()) {
